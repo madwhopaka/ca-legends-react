@@ -8,6 +8,8 @@ app.use(express.json());
 app.use(express.urlencoded());
 app.use(cors());
 
+var port = process.env.PORT || 6500; 
+
 //connecting to MONGODB database
 const db =
   "mongodb+srv://madwho:YcF36R0IwmybGZly@cluster0.nvbew.mongodb.net/UserFormDB?retryWrites=true&w=majority";
@@ -26,6 +28,10 @@ mongoose
 //
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
+  const path = require("path");
+  app.get('*', (req,res)=>{
+    res.sendFile(path.resolve(_dirname, 'client', 'build' ,'index.html'));
+  })
 }
 
 // Making the schema for the model
@@ -69,4 +75,5 @@ app.post("/submitForm", (req, res) => {
   }
 });
 
-app.listen(process.env.PORT || 9002, console.log(`server started on port ${process.env.PORT}`));
+
+app.listen(port, console.log(`server started on port ${port}`));
