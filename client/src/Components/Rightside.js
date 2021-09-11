@@ -48,9 +48,9 @@ export const Rightside = (props) => {
   // formSubmit
   const formSubmit = (userRes, props, textcheck) => {
     const { first, last, email, date } = userRes;
-    console.log(text, "chutiya");
+    console.log("This is not running");
     if (first && last && email && date && text && textcheck) {
-      console.log(text, "chutiya");
+     
       axios
         .post("/submitForm", {
           first,
@@ -86,7 +86,7 @@ export const Rightside = (props) => {
   return (
     <div>
       <form onSubmit={formik.handleSubmit}>
-        <h2>How are you feeling ? </h2>
+        <h2>How are we feeling? </h2>
         <div className="textfield-container">
           <LoginIcon
             color="primary"
